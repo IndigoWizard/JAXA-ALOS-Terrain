@@ -63,10 +63,36 @@ folium.Map.add_ee_layer = add_ee_layer
 def main():
 
     # inti gee
-    ee_authenticate()
+    # ee_authenticate()
 
     st.title("Terrain Viewer")
     st.markdown("View Digital Surface Model terrain through JAXA's ALOS World 3D Map high resolution data on the fly!")
+
+    # main map
+    m = folium.Map(location=[36.45, 10.85], tiles=None, zoom_start=5, control=True, control_scale=True, attributionControl=0)
+
+    # basemaps tiles
+    ## OSM
+    b0 = folium.TileLayer("OpenStreetMap", name="Open Street Map", attr="OSM")
+    b0.add_to(m)
+
+    ## Mapbox
+    mapbox_api = st.secrets["mapbox_token"]
+    mapbox_url = f"https://api.mapbox.com/styles/v1/mapbox/dark-v11/tiles/{{z}}/{{x}}/{{y}}?access_token={mapbox_api}"
+
+    b1 = folium.TileLayer(tiles=mapbox_url, name="MapBox Dark", attr="MapBox", overlay=False, control=True, min_zoom=1, max_zoom=20)
+    b1.add_to(m)
+
+
+    # folium useeful plugins
+    ## fullscreen
+    folium.plugins.Fullscreen(position="bottomright", title="Full Screen", title_cancel="Exit", force_separate_button=True).add_to(m)
+
+    ## layer control
+    folium.LayerControl(collapsed=True).add_to(m)
+
+    # map display
+    st_folium(m, use_container_width=True, height="700")
 
 
 if __name__ == "__main__":
