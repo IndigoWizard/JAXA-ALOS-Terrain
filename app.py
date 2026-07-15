@@ -395,7 +395,7 @@ def main():
                 dsm_vis = {
                     'min': DSM_MIN,
                     'max': DSM_MAX,
-                    'opacity': 0.9
+                    'opacity': 0.8
                 }
 
                 # Elevation (colorized DSM height for better visual)
@@ -404,7 +404,7 @@ def main():
                     'min': DSM_MIN,
                     'max': DSM_MAX,
                     'palette': ['#053061', '#2166ac', '#4393c3', '#92c5de', '#d1e5f0', '#f7f7f7', '#fddbc7', '#f4a582', '#d6604d', '#b2182b', '#67001f'],
-                    'opacity': 0.9
+                    'opacity': 0.8
                 }
 
                 # Hillshade
@@ -413,7 +413,15 @@ def main():
                     'min': 0,
                     'max': 500,
                     'palette': ['#000000', '#ffffff'],
-                    'opacity': 0.9
+                    'opacity': 0.8
+                }
+
+                # aspect
+                aspect = ee.Terrain.aspect(elevation)
+                aspect_vis = {
+                    'min': 0.0,
+                    'max': 359.99,
+                    'opacity': 0.8,
                 }
 
                 # Slopes
@@ -422,7 +430,7 @@ def main():
                     'min': 0,
                     'max': 90,
                     'palette': ['#6f0a91','#43d1bf','#86ea50','#ccec5a'],
-                    'opacity': 0.9
+                    'opacity': 0.8
                 }
 
                 # contour lines (isolines)
@@ -445,6 +453,7 @@ def main():
                 m.add_ee_layer(dsm_image, dsm_vis, 'JAXA ALOS - DSM')
                 m.add_ee_layer(elevation, elevation_vis, 'Elevation')
                 m.add_ee_layer(hillshade, hillshade_vis, 'Hillshade')
+                m.add_ee_layer(aspect, aspect_vis, 'Aspect')
                 m.add_ee_layer(slopes, slopes_vis, 'Slopes')
                 m.add_ee_layer(contours, contours_vis, 'Contour lines')
 
