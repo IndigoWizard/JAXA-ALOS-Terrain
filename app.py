@@ -15,11 +15,11 @@ from branca.element import Template, MacroElement, Figure, Element
 from folium.utilities import escape_backticks
 
 st.set_page_config(
-    page_title="JAXA Terrain Viewer",
+    page_title="Terrain Viewer",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
-        "About": "Interactive Terrain GIS app using JAXA ALOS World 3D Digital Surface Model Data. Check the project's [GitHub repo](https://github.com/IndigoWizard/JAXA-ALOS-Terrain) or email me at [my Email](mailto:tro56f5j6@mozmail.com) if need be.",
+        "About": "Interactive Terrain WebGIS app using JAXA ALOS World 3D Digital Surface Model Data. Check the project's [GitHub repo](https://github.com/IndigoWizard/JAXA-ALOS-Terrain) or email me at [my Email](mailto:tro56f5j6@mozmail.com) if need be.",
         "Get Help": "mailto:tro56f5j6@mozmail.com",
         "Report a Bug": "https://github.com/IndigoWizard/JAXA-ALOS-Terrain/issues"
     }
