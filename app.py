@@ -100,6 +100,7 @@ def parse_geojson(upload_file):
             return [], "Invalid GeoJSON file. JSON could not be decoded."
 
         # keeping a copy of the original uploaded file for layer display
+        # will be used to display user's area of interest as its own folium layer
         geojson_aoi_layer = geojson_data
 
         # detect the correct container of features
@@ -131,6 +132,10 @@ def parse_geojson(upload_file):
 
         if not geometry_list:
             return [], "No valide geometries in the GeoJSON file. Ensure it contains Polygon or MultiPolygon features."
+
+        # returning geometry list for earth engine geometry object ingestion
+        # returning geojson aoi layer for folium geojson aoi visualization
+        # returning None for no geometries
         return geometry_list, geojson_aoi_layer, None
     except Exception as e:
         return [], f"Error processing GeoJSON file: {str(e)} Please verify the file is valid."
@@ -441,6 +446,14 @@ def main():
                     'palette': ['#053061', '#2166ac', '#4393c3', '#92c5de', '#d1e5f0', '#f7f7f7', '#fddbc7', '#f4a582', '#d6604d', '#b2182b', '#67001f']
                 }
 
+                # building vector layer for user uploaded aoi using folium.Geojson()
+                for geojson_aoi_file in geojson_aoi_layer:
+                    geo_area = folium.GeoJson(
+                        data=geojson_aoi_file,
+                        name="Area of Interest",
+                        style_function=lambda x: {'color': '#dc005db2', 'weight': 2, 'fill': False}
+                    )
+                    
             # geoprocessing - end
 
             if ee_ready:
@@ -456,6 +469,7 @@ def main():
                 m.add_ee_layer(aspect, aspect_vis, 'Aspect')
                 m.add_ee_layer(slopes, slopes_vis, 'Slopes')
                 m.add_ee_layer(contours, contours_vis, 'Contour lines')
+                geo_area.add_to(m)
 
                 ####################
 
