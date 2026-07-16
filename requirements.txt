@@ -1,0 +1,6 @@
+streamlit==1.59.1
+earthengine-api==1.7.13
+streamlit-folium==0.26.1
+geemap==0.37.1
+folium==0.20.0
+geojson==3.2.0
