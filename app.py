@@ -27,6 +27,215 @@ st.set_page_config(
     
 )
 
+# custom css styling
+custom_css = """
+<style>
+
+/*---- header ----*/
+.stAppHeader {
+    height: 2rem;
+    min-height: 2rem;
+}
+
+/* Fork + Github icon */
+.st-emotion-cache-1p1m4ay {
+  display: none;
+}
+
+/*---- sidebar ----*/
+/*space above title*/
+.st-emotion-cache-10p9htt {
+    margin-bottom: 0;
+    height: 2.5rem;
+}
+
+/*title*/
+.st-emotion-cache-u1kubd h1, .st-emotion-cache-1ix68xf h1{
+    display: flex;
+    justify-content: center;
+    letter-spacing: 0.24rem;
+}
+
+/*image*/
+.st-emotion-cache-uwwqev.e1xxut3m0 {
+    display: flex;
+    justify-content: center;
+}
+
+/*navigation list*/
+.st-emotion-cache-u1kubd > ul, .st-emotion-cache-1ix68xf > ul {
+    font-size: 1.25rem;
+    list-style: none;
+    padding: 0px;
+    padding-inline: 0.5rem;
+    transition: 0.2s ease-in-out;
+}
+
+/*nav list: li*/
+.st-emotion-cache-u1kubd li, .st-emotion-cache-1ix68xf li {
+    margin: 0px;
+    padding: 0px;
+}
+
+/*nav list: a url*/
+.st-emotion-cache-u1kubd a, .st-emotion-cache-1ix68xf a {
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.15s ease-in-out;
+}
+
+.st-emotion-cache-u1kubd ul li a:hover, .st-emotion-cache-1ix68xf ul li a:hover {
+    background-color: rgba(61, 157, 243, 0.15);
+    padding-inline: 0.3rem;
+    border-radius: 0.2rem;
+}
+
+/*contact - socials*/
+.st-emotion-cache-u1kubd h3, .st-emotion-cache-1ix68xf h3{
+    font-size: 1.4rem;
+    padding: 0.75rem 0px 0.5rem;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.social-links a {
+    transition: color 0.2s;
+}
+
+.social-links svg {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+
+/*---- body ----*/
+.st-emotion-cache-zy6yx3 {
+    padding: 0.25rem;
+}
+
+.stMain.st-emotion-cache-4rsbii.e15ve43o1 {
+    scroll-behavior: smooth;
+}
+
+@media (min-width: calc(736px + 8rem)) {
+  .st-emotion-cache-zy6yx3 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (max-width: 863px) {
+  .st-emotion-cache-zy6yx3 {
+    padding: 0 1rem;
+  }
+}
+
+
+/*---- upload button ----*/
+.st-emotion-cache-1uufcrr, .st-emotion-cache-ikxeu1 {
+    width: 100%;
+}
+@media (max-width: 640px) {
+    .st-emotion-cache-h5555q, .st-emotion-cache-jwhd0x {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: unset;
+    }
+    .st-emotion-cache-1ivd0y6.e3v525e3, .st-emotion-cache-1ivd0y6.e3v525e3 {
+        align-self: center;
+    }
+}
+
+
+/*---- Generate map button ----*/
+.st-emotion-cache-zh2fnc, .st-emotion-cache-1lads1q {
+    width: auto;
+}
+/*Generate map button: dark theme*/
+.st-emotion-cache-hv6fu1:hover, .st-emotion-cache-hv6fu1:focus-visible {
+   background-color: rgba(0, 66, 128, 0.5);
+}
+
+/*Generate map button: light theme*/
+.st-emotion-cache-en1taq {
+    transition: 0.1s;
+    background-color: rgb(226, 226, 226);
+}
+
+.st-emotion-cache-en1taq:hover {
+    transition: 0.1s;
+    color: rgb(23, 114, 51);
+    background-color: rgba(33, 195, 84, 0.1);
+}
+
+
+/*---- Map Key ----*/
+.mapkey {
+    font-size: 1.75rem;
+    font-weight: 600;
+    padding-block: calc(-1px + 1rem);
+}
+.maplegendcontainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+}
+.maplegend {
+    padding: 12px;
+    border-radius: 4px;
+    width: fit-content;
+}
+.legendtitle {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.legendcontainer {
+    display: flex;
+    gap: 10px;
+    height: 150px;
+}
+.colorbar {
+    width: 1.6rem;
+    height: 100%;
+    border-radius: 2px;
+}
+#bar_elevation  {
+    background: linear-gradient(to top, #053061, #2166ac, #4393c3, #92c5de, #d1e5f0, #f7f7f7, #fddbc7, #f4a582, #d6604d, #b2182b, #67001f);
+}
+#bar_contourlines  {
+    background: linear-gradient(to top, #6f0a91, #43d1bf, #86ea50, #ccec5a);
+}
+.labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 12px;
+    line-height: 1;
+}
+.maxlabel {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+}
+.minlabel {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+}
+
+</style>
+"""
+
+st.markdown(custom_css, unsafe_allow_html=True)
+
 # Error dialog box
 @st.dialog("Error Report:")
 def show_error_dialog(messages):
@@ -219,24 +428,17 @@ def main():
         st.logo(image="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQIW2NgAAIAAAUAAR4f7BQAAAAASUVORK5CYII=", link=None, icon_image="https://cdn-icons-png.flaticon.com/512/18693/18693124.png")
         st.image("https://cdn-icons-png.flaticon.com/512/18693/18693124.png", width=100)
         st.markdown("---")
-        st.markdown("### Contact:")
+        st.markdown(
+            """
+                - [Terrain Map](#terrain-viewer)
+                - [Map Key](#mapkey)
+                - [Layers Guide](#layers-guide)
+                - [Data](#data)
+                - [Credit](#credit)
+            """
+        )
+        st.markdown("### Contact")
         contact_socials = """
-            <style>
-                .social-links {
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: start;
-                    gap: 1rem;
-                    margin-top: 0.5rem;
-                }
-                .social-links a {
-                    transition: color 0.2s;
-                }
-                .social-links svg {
-                    width: 1.6rem;
-                    height: 1.6rem;
-                }
-            </style>
             <div class="social-links">
                 <a href="https://lnkd.in/dT3VAPAB" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" xml:space="preserve"><path d="M22.262 0H1.809C.831 0 0 .774 0 1.727v20.545C0 23.226.545 24 1.523 24h20.453c.979 0 2.024-.774 2.024-1.728V1.727A1.72 1.72 0 0 0 22.262 0" style="fill:none"/><path d="M22.262 0H1.809C.831 0 0 .774 0 1.727v20.545C0 23.226.545 24 1.523 24h20.453c.979 0 2.024-.774 2.024-1.728V1.727A1.72 1.72 0 0 0 22.262 0M9.143 9.143h3.231v1.647h.035C12.902 9.902 14.357 9 16.155 9c3.453 0 4.416 1.833 4.416 5.229v6.343h-3.429v-5.718c0-1.52-.607-2.854-2.026-2.854-1.723 0-2.545 1.167-2.545 3.082v5.489H9.143zM3.429 20.571h3.429V9.143H3.429zM7.286 5.143a2.142 2.142 0 1 1-4.285.001 2.142 2.142 0 0 1 4.285-.001" style="fill-rule:evenodd;clip-rule:evenodd;fill:#0a66c2"/></svg>
@@ -245,7 +447,7 @@ def main():
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" xml:space="preserve"><path d="M2.667 23.999h18.666A2.667 2.667 0 0 0 24 21.332V2.667A2.667 2.667 0 0 0 21.333 0H2.667A2.667 2.667 0 0 0 0 2.667v18.666a2.665 2.665 0 0 0 2.667 2.666" style="fill-rule:evenodd;clip-rule:evenodd"/><path d="M5.859 8.109c0-.188-.094-.422-.234-.516L4.172 5.812v-.281h4.594l3.516 7.781 3.141-7.781h4.359v.281l-1.266 1.219c-.094.047-.141.188-.141.328v8.906c0 .141.047.281.141.375l1.266 1.172v.281h-6.235v-.281l1.266-1.219c.141-.141.141-.188.141-.375V9.047l-3.563 9h-.469l-4.125-9v6.047c-.047.234.047.516.234.703l1.641 2.016v.234H3.984v-.234l1.641-2.016c.188-.188.281-.469.234-.703z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"/></svg>
                 </a>
                 <a href="https://github.com/IndigoWizard/JAXA-ALOS-Terrain" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23.5" viewBox="0 0 24 23.5" xml:space="preserve"><path d="M10.148 16.985c-3.094-.375-5.273-2.6-5.273-5.482 0-1.171.422-2.436 1.125-3.28-.305-.773-.258-2.413.094-3.092.937-.117 2.203.375 2.953 1.054.891-.281 1.828-.422 2.977-.422s2.086.141 2.93.398c.727-.656 2.016-1.148 2.953-1.031.328.633.375 2.272.07 3.069.75.89 1.148 2.085 1.148 3.303 0 2.882-2.18 5.06-5.32 5.459.797.515 1.336 1.64 1.336 2.928v2.436c0 .703.586 1.101 1.289.82C20.672 21.53 24 17.289 24 12.042 24 5.412 18.609 0 11.977 0S0 5.412 0 12.042A11.82 11.82 0 0 0 7.758 23.17c.633.234 1.242-.188 1.242-.82v-1.874c-.328.141-.75.234-1.125.234-1.547 0-2.461-.843-3.117-2.413-.258-.633-.539-1.008-1.078-1.078-.281-.023-.375-.141-.375-.281 0-.281.469-.492.938-.492.68 0 1.266.422 1.875 1.289.469.679.961.984 1.547.984s.961-.211 1.5-.75c.398-.399.702-.75.983-.984"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" xml:space="preserve"><path d="M12 0C5.368 0 0 5.813 0 12.464-.012 17.452 3.089 22.286 7.758 24h.314c.603 0 1.178-.264 1.178-.861v-2.11a2.9 2.9 0 0 1-1.067.221c-1.467 0-2.333-.797-2.955-2.282-.245-.599-.511-.953-1.022-1.019-.266-.022-.356-.133-.356-.266 0-.266.445-.465.889-.465.645 0 1.2.399 1.778 1.219.445.642.911.931 1.467.931s.911-.2 1.422-.709c.377-.377.666-.709.932-.931-2.934-.355-5-2.459-5-5.184 0-1.107.4-2.304 1.067-3.102-.289-.732-.244-2.283.089-2.925.888-.111 2.089.355 2.8.997.845-.266 1.733-.399 2.823-.399s1.978.133 2.778.376c.689-.62 1.911-1.086 2.8-.975.311.599.356 2.149.066 2.902.711.842 1.089 1.972 1.089 3.124 0 2.725-2.067 4.785-5.044 5.162.756.487 1.267 1.551 1.267 2.769v2.665c0 .665.515.861 1.222.861h.135C20.672 22.38 24 17.728 24 12.464 24 5.813 18.632 0 12 0"/><path d="M15.072 23.139v-2.665c0-1.218-.511-2.282-1.267-2.769 2.977-.377 5.044-2.437 5.044-5.162 0-1.152-.377-2.282-1.089-3.124.289-.754.245-2.304-.066-2.902-.888-.111-2.111.355-2.8.975-.8-.243-1.689-.376-2.778-.376s-1.978.133-2.823.399c-.711-.642-1.911-1.107-2.8-.997-.332.641-.377 2.192-.088 2.923-.667.798-1.067 1.994-1.067 3.102 0 2.725 2.066 4.83 5 5.184-.266.221-.555.553-.932.931-.511.51-.867.709-1.422.709s-1.022-.288-1.467-.931c-.577-.82-1.133-1.219-1.778-1.219-.445 0-.889.2-.889.465 0 .132.089.244.356.266.511.066.777.421 1.022 1.019.622 1.485 1.489 2.282 2.955 2.282.356 0 .756-.088 1.067-.221v2.11c0 .598-.575.862-1.178.862h8.222c-.706 0-1.222-.197-1.222-.861" style="fill:#fff"/></svg>
                 </a>
                 <a href="mailto:tro56f5j6@mozmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" viewBox="0 0 24 21" xml:space="preserve"><path d="M2.653 0h18.695C23.111 0 24 .731 24 2.217v16.567C24 20.257 23.111 21 21.347 21H2.653C.889 21 0 20.257 0 18.783V2.217C0 .731.889 0 2.653 0m8.705 13.12a1 1 0 0 0 1.269.001l8.875-7.286c.339-.282.606-.932.184-1.511-.409-.579-1.157-.593-1.651-.24l-7.417 5.948a1 1 0 0 1-1.252-.001L3.965 4.084c-.494-.353-1.242-.339-1.651.24-.424.578-.155 1.228.183 1.51z" style="fill:#969baa"/></svg>
@@ -521,62 +723,6 @@ def main():
     
     with st.container():
         legend_html = """
-            <style>
-            /*---- Map Key ----*/
-            .mapkey {
-                font-size: 1.75rem;
-                font-weight: 600;
-                padding-block: calc(-1px + 1rem);
-            }
-            .maplegendcontainer {
-                display: flex;
-                flex-direction: row;
-                gap: 1.25rem;
-            }
-            .maplegend {
-                padding: 12px;
-                border-radius: 4px;
-                width: fit-content;
-            }
-            .legendtitle {
-                margin: 0 0 10px 0;
-                font-size: 1.2rem;
-                font-weight: 600;
-            }
-            .legendcontainer {
-                display: flex;
-                gap: 10px;
-                height: 150px;
-            }
-            .colorbar {
-                width: 1.6rem;
-                height: 100%;
-                border-radius: 2px;
-            }
-            #bar_elevation  {
-                background: linear-gradient(to top, #053061, #2166ac, #4393c3, #92c5de, #d1e5f0, #f7f7f7, #fddbc7, #f4a582, #d6604d, #b2182b, #67001f);
-            }
-            #bar_contourlines  {
-                background: linear-gradient(to top, #6f0a91, #43d1bf, #86ea50, #ccec5a);
-            }
-            .labels {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                font-size: 12px;
-                line-height: 1;
-            }
-            .maxlabel {
-                font-size: 1rem;
-                font-weight: 500;
-                line-height: 1;
-            }
-            .minlabel {
-                font-size: 1rem;
-                font-weight: 500;
-                line-height: 1;
-            }
-            </style>
             <div class="mapkeycontainer">
                 <div class="mapkey" id="mapkey">Map Key</div>
                 <div class="maplegendcontainer">
