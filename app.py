@@ -16,6 +16,7 @@ from folium.utilities import escape_backticks
 
 st.set_page_config(
     page_title="Terrain Viewer",
+    page_icon="https://cdn-icons-png.flaticon.com/512/18693/18693124.png",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
@@ -215,6 +216,8 @@ def main():
 
     with st.sidebar:
         st.title("Terrain Viewer")
+        st.logo(image="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQIW2NgAAIAAAUAAR4f7BQAAAAASUVORK5CYII=", link=None, icon_image="https://cdn-icons-png.flaticon.com/512/18693/18693124.png")
+        st.image("https://cdn-icons-png.flaticon.com/512/18693/18693124.png", width=100)
         st.markdown("---")
         st.markdown("### Contact:")
         contact_socials = """
@@ -643,6 +646,12 @@ def main():
             """
         )
 
+    st.divider()
+    
+    with st.container():
+        st.subheader("Credit")
+        st.caption("""The app was developped by [IndigoWizard](https://github.com/IndigoWizard) using; [Streamlit](https://streamlit.io/), [JAXA ALOS World 3D (AW3D30)](https://www.eorc.jaxa.jp/ALOS/jp/dataset/aw3d_j.htm), [Google Earth Engine](https://github.com/google/earthengine-api) Python API, [Folium](https://github.com/python-visualization/folium) and [geemap](https://geemap.org/). Terrain icon created by <a href="https://www.flaticon.com/packs/trail-running-18693113" target="_blank" rel="noopener noreferrer" title="Trail Running | Gradient outline">Karyative - Flaticon</a>""", unsafe_allow_html=True)
+        
 
 if __name__ == "__main__":
     main()
