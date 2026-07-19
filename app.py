@@ -622,8 +622,7 @@ def main():
                 # start of geoprocessing
 
                 # DSM band from alos collection/image
-                ## masking the dsm image to show only land area
-                dsm_image = alosw3d_jaxa.updateMask(alosw3d_jaxa.gt(0))
+                dsm_image = alosw3d_jaxa
                 # dsm layer visual parameters
                 dsm_vis = {
                     'min': DSM_MIN,
@@ -632,7 +631,6 @@ def main():
                 }
 
                 # Elevation (colorized DSM height for better visual)
-                elevation = dsm_image
                 elevation_vis = {
                     'min': DSM_MIN,
                     'max': DSM_MAX,
@@ -641,7 +639,6 @@ def main():
                 }
 
                 # Hillshade
-                hillshade = ee.Terrain.hillshade(elevation)
                 hillshade_vis = {
                     'min': 0,
                     'max': 500,
@@ -650,7 +647,6 @@ def main():
                 }
 
                 # aspect
-                aspect = ee.Terrain.aspect(elevation)
                 aspect_vis = {
                     'min': 0.0,
                     'max': 359.99,
@@ -658,7 +654,6 @@ def main():
                 }
 
                 # Slopes
-                slopes = ee.Terrain.slope(elevation)
                 slopes_vis = {
                     'min': 0,
                     'max': 90,
@@ -666,8 +661,10 @@ def main():
                     'opacity': 0.8
                 }
 
+                alos_product = ee.Terrain.products(dsm_image)
+
                 # contour lines (isolines)
-                contours = geemap.create_contours(elevation, min_value=DSM_MIN, max_value=DSM_MAX, interval=20, region=geometry_aoi)
+                contours = geemap.create_contours(dsm_image, min_value=DSM_MIN, max_value=DSM_MAX, interval=20, region=geometry_aoi)
                 contours_vis = {
                     'min': DSM_MIN,
                     'max': DSM_MAX,
@@ -684,13 +681,15 @@ def main():
                 ####################
                 # Layers display
 
-                m.add_ee_layer(dsm_image, dsm_vis, 'JAXA ALOS - DSM')
-                m.add_ee_layer(elevation, elevation_vis, 'Elevation')
-                m.add_ee_layer(hillshade, hillshade_vis, 'Hillshade')
-                m.add_ee_layer(aspect, aspect_vis, 'Aspect')
-                m.add_ee_layer(slopes, slopes_vis, 'Slopes')
+                m.add_ee_layer(alos_product.select('DSM'), dsm_vis, 'JAXA ALOS - DSM')
+                m.add_ee_layer(alos_product.select('DSM'), elevation_vis, 'Elevation')
+                m.add_ee_layer(alos_product.select('hillshade'), hillshade_vis, 'Hillshade')
+                m.add_ee_layer(alos_product.select('aspect'), aspect_vis, 'Aspect')
+                m.add_ee_layer(alos_product.select('slope'), slopes_vis, 'Slopes')
                 m.add_ee_layer(contours, contours_vis, 'Contour lines')
                 add_geojson_layers(m, geojson_aoi_layer)
+                
+                st.toast("DSM found for selected AOI.")
 
                 ####################
 
