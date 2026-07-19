@@ -255,7 +255,7 @@ def main():
         st.markdown(contact_socials, unsafe_allow_html=True)
 
     st.title("Terrain Viewer")
-    st.markdown("View Digital Surface Model terrain through JAXA's ALOS World 3D Map high resolution data on the fly!")
+    st.markdown("View terrain surface through JAXA's ALOS World 3D Map high-resolution Digital Surface Model data on the fly!")
 
 
     with st.form("terrain map"):
@@ -505,95 +505,6 @@ def main():
         # form's submit button
         submitted = c_right.form_submit_button("Generate Map")
 
-        with st.container():
-            legend_html = """
-                <style>
-                .mapkeycontainer {
-                    margin-top: 4rem;
-                    border: 1px solid rgba(49, 51, 63, 0.2);
-                    border-radius: 0.5rem;
-                    margin-bottom: calc(-1px + 1rem);
-                }
-                .mapkey {
-                    font-size: 1.4rem;
-                    font-weight: 600;
-                    padding: calc(-1px + 1rem);
-                }
-                .maplegendcontainer {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 1.25rem;
-                }
-                .maplegend {
-                    padding: 12px;
-                    border-radius: 4px;
-                    width: fit-content;
-                }
-                .legendtitle {
-                    margin: 0 0 10px 0;
-                    font-size: 1.1rem;
-                    font-weight: 600;
-                }
-                .legendcontainer {
-                    display: flex;
-                    gap: 10px;
-                    height: 150px;
-                }
-                .colorbar {
-                    width: 15px;
-                    height: 100%;
-                    border-radius: 2px;
-                }
-                #bar_elevation  {
-                    background: linear-gradient(to top, #053061, #2166ac, #4393c3, #92c5de, #d1e5f0, #f7f7f7, #fddbc7, #f4a582, #d6604d, #b2182b, #67001f);
-                }
-                #bar_contourlines  {
-                    background: linear-gradient(to top, #6f0a91, #43d1bf, #86ea50, #ccec5a);
-                }
-                .labels {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    font-size: 12px;
-                    line-height: 1;
-                }
-                .maxlabel {
-                    font-size: 12px;
-                    line-height: 1;
-                }
-                .minlabel {
-                    font-size: 12px;
-                    line-height: 1;
-                }
-                </style>
-                <div class="mapkeycontainer">
-                    <div class="mapkey">Map Key</div>
-                    <div class="maplegendcontainer">
-                        <div class="maplegend">
-                            <div class="legendtitle">Elevation</div>
-                            <div class="legendcontainer">
-                                <div class="colorbar" id="bar_elevation"></div>
-                                <div class="labels">
-                                    <span class="maxlabel">Max: 8768 m</span>
-                                    <span class="minlabel">Min: -433 m</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="maplegend">
-                            <div class="legendtitle">Slopes</div>
-                            <div class="legendcontainer">
-                                <div class="colorbar" id="bar_contourlines"></div>
-                                <div class="labels">
-                                    <span class="maxlabel">90°</span>
-                                    <span class="minlabel">0°</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            """
-            c_right.markdown(legend_html, unsafe_allow_html=True)
-
         if submitted:
             with c_left:
                 # map display with the calculated layers
@@ -603,6 +514,93 @@ def main():
                 # map display by default
                 st_folium(m, use_container_width=True, height="600")
 
+    st.divider()
+    
+    with st.container():
+        legend_html = """
+            <style>
+            /*---- Map Key ----*/
+            .mapkey {
+                font-size: 1.75rem;
+                font-weight: 600;
+                padding-block: calc(-1px + 1rem);
+            }
+            .maplegendcontainer {
+                display: flex;
+                flex-direction: row;
+                gap: 1.25rem;
+            }
+            .maplegend {
+                padding: 12px;
+                border-radius: 4px;
+                width: fit-content;
+            }
+            .legendtitle {
+                margin: 0 0 10px 0;
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+            .legendcontainer {
+                display: flex;
+                gap: 10px;
+                height: 150px;
+            }
+            .colorbar {
+                width: 1.6rem;
+                height: 100%;
+                border-radius: 2px;
+            }
+            #bar_elevation  {
+                background: linear-gradient(to top, #053061, #2166ac, #4393c3, #92c5de, #d1e5f0, #f7f7f7, #fddbc7, #f4a582, #d6604d, #b2182b, #67001f);
+            }
+            #bar_contourlines  {
+                background: linear-gradient(to top, #6f0a91, #43d1bf, #86ea50, #ccec5a);
+            }
+            .labels {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                font-size: 12px;
+                line-height: 1;
+            }
+            .maxlabel {
+                font-size: 1rem;
+                font-weight: 500;
+                line-height: 1;
+            }
+            .minlabel {
+                font-size: 1rem;
+                font-weight: 500;
+                line-height: 1;
+            }
+            </style>
+            <div class="mapkeycontainer">
+                <div class="mapkey" id="mapkey">Map Key</div>
+                <div class="maplegendcontainer">
+                    <div class="maplegend">
+                        <div class="legendtitle">Elevation</div>
+                        <div class="legendcontainer">
+                            <div class="colorbar" id="bar_elevation"></div>
+                            <div class="labels">
+                                <span class="maxlabel">Max: 8768 m</span>
+                                <span class="minlabel">Min: -433 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="maplegend">
+                        <div class="legendtitle">Slopes</div>
+                        <div class="legendcontainer">
+                            <div class="colorbar" id="bar_contourlines"></div>
+                            <div class="labels">
+                                <span class="maxlabel">90°</span>
+                                <span class="minlabel">0°</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        """
+        st.markdown(legend_html, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
