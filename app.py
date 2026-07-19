@@ -624,5 +624,25 @@ def main():
             """
         )
 
+    st.divider()
+    
+    with st.container():
+        st.subheader("Data")
+        st.markdown(
+            """
+            Data used in this project is from JAXA ALOS World 3D (AW3D30). It is a 30m high resolution Digital Surface Model data.
+            
+            - **Provider:** [Japan Aerospace Exploration Agency (JAXA)](https://www.jaxa.jp/)
+            - **Mission:** [Advanced Land Observing Satellite (ALOS)](https://earth.jaxa.jp/ja/research/projects/alos/index.html)
+            - **Dataset:** [ALOS World 3D (AW3D30)](https://www.eorc.jaxa.jp/ALOS/jp/dataset/aw3d_j.htm)
+            - **Version:** 4.1
+            - **Resolution:** 30 m
+            - **Type:** Digital Surface Model (DSM)
+            - **Platform:** Google Earth Engine
+            
+            """
+        )
+
+
 if __name__ == "__main__":
     main()
