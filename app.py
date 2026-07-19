@@ -486,7 +486,8 @@ def main():
         # DSM_MAX = 8768
 
         with c_right:
-
+            st.info("Isolines (meters).")
+            contour_lines = st.slider(label="isolines", min_value=20, max_value=100, step=20, value=40 , label_visibility="collapsed")
             st.info("Upload Area of Interest file:")
             # file upload
             upload_files = st.file_uploader("Create a GeoJSON file at: [geojsion.io](https://geojson.io/)", accept_multiple_files=True)
@@ -682,14 +683,14 @@ def main():
                 alos_product = ee.Terrain.products(dsm_image)
 
                 # contour lines (isolines)
-                contours = geemap.create_contours(dsm_image, min_value=dsm_val_min, max_value=dsm_val_max, interval=20, region=geometry_aoi)
+                contours = geemap.create_contours(dsm_image, min_value=dsm_val_min, max_value=dsm_val_max, interval=contour_lines, region=geometry_aoi)
                 contours_vis = {
                     'min': dsm_val_min,
                     'max': dsm_val_max,
                     'palette': ['#053061', '#2166ac', '#4393c3', '#92c5de', '#d1e5f0', '#f7f7f7', '#fddbc7', '#f4a582', '#d6604d', '#b2182b', '#67001f']
                 }
 
-                    
+
             # geoprocessing - end
 
             if ee_ready:
