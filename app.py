@@ -299,6 +299,21 @@ def satCollection(aoi):
     except Exception as e:
         return alos_image, f"Earth Engine encountered an error while building JAXA ALOS W3D Image: \n {str(e)}"
 
+
+# a function to get the min and max elevation values for a given AOI
+def dsm_stats(image_object, geometry):
+    stats = (
+        image_object.reduceRegion(
+            reducer = ee.Reducer.minMax(),
+            geometry = geometry,
+            scale = 30,
+            maxPixels = 1e9
+        )
+        .getInfo()
+    )
+    return stats["DSM_min"], stats["DSM_max"]
+
+
 # File Parser: GeoJSON (.geojson, .json)
 def parse_geojson(upload_file):
     try:
@@ -467,8 +482,8 @@ def main():
         c_left, c_right = st.columns([3, 1])
         ee_errors = []
         ee_ready = True
-        DSM_MIN = -433
-        DSM_MAX = 8768
+        # DSM_MIN = -433
+        # DSM_MAX = 8768
 
         with c_right:
 
@@ -623,17 +638,20 @@ def main():
 
                 # DSM band from alos collection/image
                 dsm_image = alosw3d_jaxa
+                dsm_val_min, dsm_val_max = dsm_stats(dsm_image, geometry_aoi)
+                dsm_val_min_max = [dsm_val_min, dsm_val_max]
+
                 # dsm layer visual parameters
                 dsm_vis = {
-                    'min': DSM_MIN,
-                    'max': DSM_MAX,
+                    'min': dsm_val_min,
+                    'max': dsm_val_max,
                     'opacity': 0.8
                 }
 
                 # Elevation (colorized DSM height for better visual)
                 elevation_vis = {
-                    'min': DSM_MIN,
-                    'max': DSM_MAX,
+                    'min': dsm_val_min,
+                    'max': dsm_val_max,
                     'palette': ['#053061', '#2166ac', '#4393c3', '#92c5de', '#d1e5f0', '#f7f7f7', '#fddbc7', '#f4a582', '#d6604d', '#b2182b', '#67001f'],
                     'opacity': 0.8
                 }
@@ -664,10 +682,10 @@ def main():
                 alos_product = ee.Terrain.products(dsm_image)
 
                 # contour lines (isolines)
-                contours = geemap.create_contours(dsm_image, min_value=DSM_MIN, max_value=DSM_MAX, interval=20, region=geometry_aoi)
+                contours = geemap.create_contours(dsm_image, min_value=dsm_val_min, max_value=dsm_val_max, interval=20, region=geometry_aoi)
                 contours_vis = {
-                    'min': DSM_MIN,
-                    'max': DSM_MAX,
+                    'min': dsm_val_min,
+                    'max': dsm_val_max,
                     'palette': ['#053061', '#2166ac', '#4393c3', '#92c5de', '#d1e5f0', '#f7f7f7', '#fddbc7', '#f4a582', '#d6604d', '#b2182b', '#67001f']
                 }
 
@@ -729,8 +747,8 @@ def main():
                         <div class="legendcontainer">
                             <div class="colorbar" id="bar_elevation"></div>
                             <div class="labels">
-                                <span class="maxlabel">Max: 8768 m</span>
-                                <span class="minlabel">Min: -433 m</span>
+                                <span class="maxlabel">Max: {1} m</span>
+                                <span class="minlabel">Min: {0} m</span>
                             </div>
                         </div>
                     </div>
@@ -746,7 +764,7 @@ def main():
                     </div>
                 </div>
             </div>
-        """
+        """.format(*dsm_val_min_max)
         st.markdown(legend_html, unsafe_allow_html=True)
 
     st.divider()
