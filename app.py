@@ -602,5 +602,27 @@ def main():
         """
         st.markdown(legend_html, unsafe_allow_html=True)
 
+    st.divider()
+    
+    with st.container():
+        st.subheader("Layers guide")
+        st.markdown(
+            """
+            The following is a guide on the map layers available in this app for better understanding their use and context:
+
+            - **DSM:** A Digital Surface Model that displays terrain elevation information that includes vegetation and buildings.
+            - **Elevation:** The colorized visualization of the DSM to improve terrain interpretation.
+            - **Hillshade:** Artificial illumination of the terrain to emphasize relief. It is useful for visually identifying **ridges**, **valleys** and **landforms**.
+            - **Aspect:** Direction each slope faces, measured clockwise starting from the north. It can be useful for; **solar exposure**, **watershed analysis** and *hydrological modeling**.
+            - **Slopes:** Terrain steepness in degrees. Useful for; **engineering**, **erosion**, **landslide susceptibility**, **animal habitat analysis** (e.g: cougars... etc).
+            - **Contours:** Isolines connecting equal elevations at certain intervals. Useful for; **topographic interpretation**, **terrain planning** and **map reading**.
+
+            ##### Notes
+            - Elevation values represent a Digital Surface Model (DSM), not bare-earth terrain.
+            - Buildings and vegetation are included in elevation values.
+            - Only land areas covered by the ALOS World 3D dataset are available.
+            """
+        )
+
 if __name__ == "__main__":
     main()
