@@ -29,209 +29,208 @@ st.set_page_config(
 
 # custom css styling
 custom_css = """
-<style>
+    <style>
 
-/*---- header ----*/
-.stAppHeader {
-    height: 2rem;
-    min-height: 2rem;
-}
+    /*---- header ----*/
+    .stAppHeader {
+        height: 2rem;
+        min-height: 2rem;
+    }
 
-/* Fork + Github icon */
-.st-emotion-cache-1p1m4ay {
-  display: none;
-}
+    /* Fork + Github icon */
+    .st-emotion-cache-1p1m4ay {
+    display: none;
+    }
 
-/*---- sidebar ----*/
-/*space above title*/
-.st-emotion-cache-10p9htt {
-    margin-bottom: 0;
-    height: 2.5rem;
-}
+    /*---- sidebar ----*/
+    /*space above title*/
+    .st-emotion-cache-10p9htt {
+        margin-bottom: 0;
+        height: 2.5rem;
+    }
 
-/*title*/
-.st-emotion-cache-u1kubd h1, .st-emotion-cache-1ix68xf h1{
-    display: flex;
-    justify-content: center;
-    letter-spacing: 0.24rem;
-}
+    /*title*/
+    .st-emotion-cache-u1kubd h1, .st-emotion-cache-1ix68xf h1{
+        display: flex;
+        justify-content: center;
+        letter-spacing: 0.24rem;
+    }
 
-/*image*/
-.st-emotion-cache-uwwqev.e1xxut3m0 {
-    display: flex;
-    justify-content: center;
-}
+    /*image*/
+    .st-emotion-cache-uwwqev.e1xxut3m0 {
+        display: flex;
+        justify-content: center;
+    }
 
-/*navigation list*/
-.st-emotion-cache-u1kubd > ul, .st-emotion-cache-1ix68xf > ul {
-    font-size: 1.25rem;
-    list-style: none;
-    padding: 0px;
-    padding-inline: 0.5rem;
-    transition: 0.2s ease-in-out;
-}
+    /*navigation list*/
+    .st-emotion-cache-u1kubd > ul, .st-emotion-cache-1ix68xf > ul {
+        font-size: 1.25rem;
+        list-style: none;
+        padding: 0px;
+        transition: 0.2s ease-in-out;
+    }
 
-/*nav list: li*/
-.st-emotion-cache-u1kubd li, .st-emotion-cache-1ix68xf li {
-    margin: 0px;
-    padding: 0px;
-}
+    /*nav list: li*/
+    .st-emotion-cache-u1kubd li, .st-emotion-cache-1ix68xf li {
+        margin: 0px;
+        padding: 0px;
+    }
 
-/*nav list: a url*/
-.st-emotion-cache-u1kubd a, .st-emotion-cache-1ix68xf a {
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.15s ease-in-out;
-}
+    /*nav list: a url*/
+    .st-emotion-cache-u1kubd a, .st-emotion-cache-1ix68xf a {
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.15s ease-in-out;
+    }
 
-.st-emotion-cache-u1kubd ul li a:hover, .st-emotion-cache-1ix68xf ul li a:hover {
-    background-color: rgba(61, 157, 243, 0.15);
-    padding-inline: 0.3rem;
-    border-radius: 0.2rem;
-}
+    .st-emotion-cache-u1kubd ul li a:hover, .st-emotion-cache-1ix68xf ul li a:hover {
+        background-color: rgba(61, 157, 243, 0.15);
+        padding-inline: 0.3rem;
+        border-radius: 0.2rem;
+    }
 
-/*contact - socials*/
-.st-emotion-cache-u1kubd h3, .st-emotion-cache-1ix68xf h3{
-    font-size: 1.4rem;
-    padding: 0.75rem 0px 0.5rem;
-}
+    /*contact - socials*/
+    .st-emotion-cache-u1kubd h3, .st-emotion-cache-1ix68xf h3{
+        font-size: 1.4rem;
+        padding: 0.75rem 0px 0.5rem;
+    }
 
-.social-links {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    gap: 1rem;
-    margin-top: 0.5rem;
-}
+    .social-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
 
-.social-links a {
-    transition: color 0.2s;
-}
+    .social-links a {
+        transition: color 0.2s;
+    }
 
-.social-links svg {
-    width: 1.4rem;
-    height: 1.4rem;
-}
-
-
-/*---- body ----*/
-.st-emotion-cache-zy6yx3 {
-    padding: 0.25rem;
-}
-
-.stMain.st-emotion-cache-4rsbii.e15ve43o1 {
-    scroll-behavior: smooth;
-}
-
-@media (min-width: calc(736px + 8rem)) {
-  .st-emotion-cache-zy6yx3 {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-@media (max-width: 863px) {
-  .st-emotion-cache-zy6yx3 {
-    padding: 0 1rem;
-  }
-}
+    .social-links svg {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
 
 
-/*---- upload button ----*/
-.st-emotion-cache-1uufcrr, .st-emotion-cache-ikxeu1 {
-    width: 100%;
-}
-@media (max-width: 640px) {
-    .st-emotion-cache-h5555q, .st-emotion-cache-jwhd0x {
-        position: relative;
+    /*---- body ----*/
+    .st-emotion-cache-zy6yx3 {
+        padding: 0.25rem;
+    }
+
+    .stMain.st-emotion-cache-4rsbii.e15ve43o1 {
+        scroll-behavior: smooth;
+    }
+
+    @media (min-width: calc(736px + 8rem)) {
+        .st-emotion-cache-zy6yx3 {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+    }
+
+    @media (max-width: 863px) {
+        .st-emotion-cache-zy6yx3 {
+            padding: 0 1rem;
+        }
+    }
+
+
+    /*---- upload button ----*/
+    .st-emotion-cache-1uufcrr, .st-emotion-cache-ikxeu1 {
+        width: 100%;
+    }
+    @media (max-width: 640px) {
+        .st-emotion-cache-h5555q, .st-emotion-cache-jwhd0x {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: unset;
+        }
+        .st-emotion-cache-1ivd0y6.e3v525e3, .st-emotion-cache-1ivd0y6.e3v525e3 {
+            align-self: center;
+        }
+    }
+
+
+    /*---- Generate map button ----*/
+    .st-emotion-cache-zh2fnc, .st-emotion-cache-1lads1q {
+        width: auto;
+    }
+    /*Generate map button: dark theme*/
+    .st-emotion-cache-hv6fu1:hover, .st-emotion-cache-hv6fu1:focus-visible {
+    background-color: rgba(0, 66, 128, 0.5);
+    }
+
+    /*Generate map button: light theme*/
+    .st-emotion-cache-en1taq {
+        transition: 0.1s;
+        background-color: rgb(226, 226, 226);
+    }
+
+    .st-emotion-cache-en1taq:hover {
+        transition: 0.1s;
+        color: rgb(23, 114, 51);
+        background-color: rgba(33, 195, 84, 0.1);
+    }
+
+
+    /*---- Map Key ----*/
+    .mapkey {
+        font-size: 1.75rem;
+        font-weight: 600;
+        padding-block: calc(-1px + 1rem);
+    }
+    .maplegendcontainer {
+        display: flex;
+        flex-direction: row;
+        gap: 1.25rem;
+    }
+    .maplegend {
+        padding: 12px;
+        border-radius: 4px;
+        width: fit-content;
+    }
+    .legendtitle {
+        margin: 0 0 10px 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    .legendcontainer {
+        display: flex;
+        gap: 10px;
+        height: 150px;
+    }
+    .colorbar {
+        width: 1.6rem;
+        height: 100%;
+        border-radius: 2px;
+    }
+    #bar_elevation  {
+        background: linear-gradient(to top, #053061, #2166ac, #4393c3, #92c5de, #d1e5f0, #f7f7f7, #fddbc7, #f4a582, #d6604d, #b2182b, #67001f);
+    }
+    #bar_contourlines  {
+        background: linear-gradient(to top, #6f0a91, #43d1bf, #86ea50, #ccec5a);
+    }
+    .labels {
         display: flex;
         flex-direction: column;
-        align-items: unset;
+        justify-content: space-between;
+        font-size: 12px;
+        line-height: 1;
     }
-    .st-emotion-cache-1ivd0y6.e3v525e3, .st-emotion-cache-1ivd0y6.e3v525e3 {
-        align-self: center;
+    .maxlabel {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1;
     }
-}
+    .minlabel {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1;
+    }
 
-
-/*---- Generate map button ----*/
-.st-emotion-cache-zh2fnc, .st-emotion-cache-1lads1q {
-    width: auto;
-}
-/*Generate map button: dark theme*/
-.st-emotion-cache-hv6fu1:hover, .st-emotion-cache-hv6fu1:focus-visible {
-   background-color: rgba(0, 66, 128, 0.5);
-}
-
-/*Generate map button: light theme*/
-.st-emotion-cache-en1taq {
-    transition: 0.1s;
-    background-color: rgb(226, 226, 226);
-}
-
-.st-emotion-cache-en1taq:hover {
-    transition: 0.1s;
-    color: rgb(23, 114, 51);
-    background-color: rgba(33, 195, 84, 0.1);
-}
-
-
-/*---- Map Key ----*/
-.mapkey {
-    font-size: 1.75rem;
-    font-weight: 600;
-    padding-block: calc(-1px + 1rem);
-}
-.maplegendcontainer {
-    display: flex;
-    flex-direction: row;
-    gap: 1.25rem;
-}
-.maplegend {
-    padding: 12px;
-    border-radius: 4px;
-    width: fit-content;
-}
-.legendtitle {
-    margin: 0 0 10px 0;
-    font-size: 1.2rem;
-    font-weight: 600;
-}
-.legendcontainer {
-    display: flex;
-    gap: 10px;
-    height: 150px;
-}
-.colorbar {
-    width: 1.6rem;
-    height: 100%;
-    border-radius: 2px;
-}
-#bar_elevation  {
-    background: linear-gradient(to top, #053061, #2166ac, #4393c3, #92c5de, #d1e5f0, #f7f7f7, #fddbc7, #f4a582, #d6604d, #b2182b, #67001f);
-}
-#bar_contourlines  {
-    background: linear-gradient(to top, #6f0a91, #43d1bf, #86ea50, #ccec5a);
-}
-.labels {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-size: 12px;
-    line-height: 1;
-}
-.maxlabel {
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1;
-}
-.minlabel {
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1;
-}
-
-</style>
+    </style>
 """
 
 st.markdown(custom_css, unsafe_allow_html=True)
